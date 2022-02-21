@@ -42,7 +42,7 @@ nvim_tree.setup {
     "dashboard",
     "alpha",
   },
-  auto_close = true,
+  auto_close = false, -- auto_close closes nvim when only explorer/nvimTree is open
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = true,

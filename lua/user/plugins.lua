@@ -62,6 +62,7 @@ return packer.startup(function(use)
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
+  use 'folke/tokyonight.nvim'
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -93,6 +94,23 @@ return packer.startup(function(use)
 
   -- Git
   use "lewis6991/gitsigns.nvim"
+
+  --Tmux
+  -- use"aserowy/tmux.nvim"
+  use { 'alexghergh/nvim-tmux-navigation', config = function()
+    require'nvim-tmux-navigation'.setup {
+        disable_when_zoomed = true, -- defaults to false
+        keybindings = {
+            left = "<C-h>",
+            down = "<C-j>",
+            up = "<C-k>",
+            right = "<C-l>",
+            last_active = "<C-\\\\>",
+            next = "<C-Space>",
+        }
+    }
+  end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
