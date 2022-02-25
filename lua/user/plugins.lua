@@ -93,7 +93,10 @@ return packer.startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
-	use("JoosepAlviste/nvim-ts-context-commentstring")
+	use("JoosepAlviste/nvim-ts-context-commentstring") -- plugin for setting the commentstring based on the cursor location in a file.
+  use("windwp/nvim-ts-autotag") -- auto closes and renames html tags
+  use("p00f/nvim-ts-rainbow") -- bracket colorizer
+  -- use("jose-elias-alvarez/nvim-lsp-ts-utils") -- TODO: setup this plugin (https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils)
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")

@@ -1,4 +1,33 @@
-# Neovim from scratch
+# Customized (custom1 branch setup)
+
+This nevim config focuses on typescript react development. 
+- lsp for typescript autocompletion
+- null-ls for linting (eslint_d) and formatting(eslint_d) which respects project related eslintrc/prettierrc 
+- tailwindcss autocompletion with lsp tailwindcss (installed via :LspInstallInfo)
+- autolint/code-action(eslint) on save 
+- nvim-ts-autotag (treesitter extension) which automatically closes and renames html tags  
+
+TODOS:
+- Setup ts-utils-plugin(github.com/jose-elias-alvarez/nvim-lsp-ts-utils)
+- Add lua linter 
+- Add golang, python, graphql setup aswell
+
+## Setup steps after first clone neovim-from-scratch repo
+
+
+```
+cd ~
+git clone git@github.com:philippmossier/Neovim-from-scratch.git .config/nvim
+cd .config/nvim 
+git checkout custom1
+npm install -g eslint_d
+nvim .
+:PackerInstall
+```
+
+---
+
+## Neovim from scratch
 
 Each video will be associated with a branch so checkout the one you are interested in, you can follow along with this [playlist](https://www.youtube.com/watch?v=ctH-a-1eUME&list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ).
 
