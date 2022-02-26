@@ -1,3 +1,5 @@
+-- null-ls DOCS builtins: https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+
 local null_ls_status_ok, null_ls = pcall(require, "null-ls")
 
 if not null_ls_status_ok then
@@ -53,7 +55,18 @@ null_ls.setup(
         sources = {
             -- formatting.stylua,
             diagnostics.eslint_d,
-            formatting.eslint_d,
+            formatting.eslint_d, -- requires npm install -g eslint_d
+            -- formatting.prettier.with({
+            --     filetypes = { "css", "scss", "html", "json", "yaml", "markdown", "graphql" },
+            -- }),
+            formatting.prettierd.with({
+                filetypes = { "css", "scss", "html", "json", "yaml", "markdown", "graphql" },
+                -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+                -- env = {
+                --     PRETTIERD_DEFAULT_CONFIG = vim.fn.expand "~/.config/nvim/utils/linter-config/.prettierrc.json",
+                -- },
+            }), -- requires npm install -g @fsouza/prettierd
+
             -- formatting.prettier,
             -- formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }), -- only use if no local prettiertc or eslintrc
             -- formatting.black.with({ extra_args = { "--fast" } }), -- not sure what this does
