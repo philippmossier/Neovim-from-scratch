@@ -96,7 +96,7 @@ return packer.startup(function(use)
 	use("JoosepAlviste/nvim-ts-context-commentstring") -- plugin for setting the commentstring based on the cursor location in a file.
   use("windwp/nvim-ts-autotag") -- auto closes and renames html tags
   use("p00f/nvim-ts-rainbow") -- bracket colorizer
-  -- use("jose-elias-alvarez/nvim-lsp-ts-utils") -- TODO: setup this plugin (https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils)
+  --   use("jose-elias-alvarez/nvim-lsp-ts-utils") -- TODO: setup this plugin (https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils)
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
@@ -119,6 +119,9 @@ return packer.startup(function(use)
 			})
 		end,
 	})
+
+  -- Jest
+  use("David-Kunz/jester")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

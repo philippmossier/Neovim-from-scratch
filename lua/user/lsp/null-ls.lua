@@ -67,13 +67,13 @@ null_ls.setup(
             -- formatting.prettier.with({
             --     filetypes = { "css", "scss", "html", "json", "yaml", "markdown", "graphql" },
             -- }),
-            -- formatting.prettierd.with({
-            --     filetypes = { "css", "scss", "html", "json", "yaml", "markdown", "graphql" },
-            --     -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
-            --     -- env = {
-            --     --     PRETTIERD_DEFAULT_CONFIG = vim.fn.expand "~/.config/nvim/utils/linter-config/.prettierrc.json",
-            --     -- },
-            -- }), -- requires npm install -g @fsouza/prettierd
+            formatting.prettierd.with({
+                filetypes = { "css", "scss", "html", "json", "yaml", "markdown", "graphql" },
+                -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+                -- env = {
+                --     PRETTIERD_DEFAULT_CONFIG = vim.fn.expand "~/.config/nvim/utils/linter-config/.prettierrc.json",
+                -- },
+            }), -- requires npm install -g @fsouza/prettierd
 
             -- formatting.prettier,
             -- formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }), -- only use if no local prettiertc or eslintrc

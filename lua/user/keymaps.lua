@@ -67,3 +67,6 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+
+-- Jest https://github.com/David-Kunz/jester
+keymap("n", "<leader>j", "<cmd>lua require\"jester\".run_file({cmd = \"./node_modules/.bin/jest '$result' -- $file\", terminal_cmd = \":split | terminal\"})<CR>", opts)
