@@ -97,7 +97,9 @@ return packer.startup(function(use)
 	use("windwp/nvim-ts-autotag") -- auto closes and renames html tags
 	use("p00f/nvim-ts-rainbow") -- bracket colorizer
     use("jose-elias-alvarez/nvim-lsp-ts-utils") -- TODO: setup this plugin (https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils)
-
+	use {
+		"ray-x/lsp_signature.nvim",
+	  }
 	-- Git
 	use("lewis6991/gitsigns.nvim")
 
