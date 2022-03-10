@@ -7,7 +7,7 @@ end
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
 lsp_installer.on_server_ready(function(server)
 	local opts = {
-		on_attach = require("user.lsp.handlers").on_attach,
+		-- on_attach = require("user.lsp.handlers").on_attach, -- cant't be shared like this when a other server has its own on_attach (default_on_attach should be imported into every server on_attach instead)
 		capabilities = require("user.lsp.handlers").capabilities,
 	}
 
@@ -21,6 +21,10 @@ lsp_installer.on_server_ready(function(server)
 	 	opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
 	 end
 
+	 if server.name == "tsserver" then
+		local tsserver_opts = require("user.lsp.settings.tsserver")
+		opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
+	end
 	-- This setup() function is exactly the same as lspconfig's setup function.
 	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 	server:setup(opts)

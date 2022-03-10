@@ -1,3 +1,4 @@
+local default_on_attach = require("user.lsp.handlers").on_attach
 local default_schemas = {}
 local status_ok, jsonls_settings = pcall(require, "nlspsettings.jsonls")
 if status_ok then
@@ -183,6 +184,10 @@ end
 local extended_schemas = extend(schemas, default_schemas)
 
 local opts = {
+  on_attach = function(client, bufnr)
+                -- import on_attach settings which are used on every server 
+                default_on_attach(client, bufnr)
+              end,
   settings = {
     json = {
       schemas = extended_schemas,
