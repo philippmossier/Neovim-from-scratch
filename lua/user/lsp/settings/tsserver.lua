@@ -22,7 +22,7 @@ M.on_attach = function(client, bufnr)
         ts_utils.setup({
             debug = false,
             disable_commands = false,
-            enable_import_on_completion = false,
+            enable_import_on_completion = true,
 
             -- import all
             import_all_timeout = 5000, -- ms
@@ -61,7 +61,7 @@ M.on_attach = function(client, bufnr)
             },
 
             -- update imports on file move
-            update_imports_on_move = false,
+            update_imports_on_move = true,
             require_confirmation_on_move = false,
             watch_dir = nil,
         })
