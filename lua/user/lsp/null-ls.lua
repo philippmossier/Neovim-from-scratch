@@ -62,6 +62,7 @@ null_ls.setup(
             diagnostics.eslint_d, -- requires npm install -g eslint_d
             formatting.eslint_d, 
 
+            null_ls.builtins.code_actions.eslint_d,
 
 
             -- formatting.prettier.with({

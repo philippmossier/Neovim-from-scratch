@@ -20,7 +20,7 @@ cd ~
 git clone git@github.com:philippmossier/Neovim-from-scratch.git .config/nvim
 cd .config/nvim 
 git checkout custom1
-npm install -g eslint_d
+npm install -g eslint_d typescript-language-server typescript @fsouza/prettierd
 nvim .
 :PackerInstall
 ```
