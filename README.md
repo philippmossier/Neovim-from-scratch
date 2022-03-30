@@ -14,6 +14,21 @@ TODOS:
 
 ## Setup steps after first clone neovim-from-scratch repo
 
+## Setup cssls language-server for css, scss, less
+DOCS: 
+- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#cssls
+- https://github.com/hrsh7th/vscode-langservers-extracted
+
+NOTE: make sure you use node >=14 (the cssls from nvim uses vscode-langservers-extracted version 4.1, which is not working with node 12 or node 13)
+
+**Install steps:**
+1. Inside nvim:
+:LspInstallInfo
+install cssls with typing i
+
+2. Inside shell
+npm i -g vscode-langservers-extracted
+
 
 ```
 cd ~
