@@ -12,8 +12,6 @@ TODOS:
 - Add lua linter 
 - Add golang, python, graphql setup aswell
 
-## Setup steps after first clone neovim-from-scratch repo
-
 ## Setup cssls language-server for css, scss, less
 DOCS: 
 - https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#cssls
@@ -29,6 +27,8 @@ install cssls with typing i
 2. Inside shell
 npm i -g vscode-langservers-extracted
 
+
+## Setup steps after first clone neovim-from-scratch repo
 
 ```
 cd ~
