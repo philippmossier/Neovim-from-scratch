@@ -25,7 +25,11 @@ NOTE: make sure you use node >=14 (the cssls from nvim uses vscode-langservers-e
 install cssls with typing i
 
 2. Inside shell
-npm i -g vscode-langservers-extracted
+npm install -g eslint_d
+npm install -g typescript-language-server
+npm install -g typescript
+npm install -g @fsouza/prettier
+npm install -g tree-sitter-cli
 
 
 ## Setup steps after first clone neovim-from-scratch repo
@@ -34,8 +38,12 @@ npm i -g vscode-langservers-extracted
 cd ~
 git clone git@github.com:philippmossier/Neovim-from-scratch.git .config/nvim
 cd .config/nvim 
-git checkout custom1
-npm install -g eslint_d typescript-language-server typescript @fsouza/prettierd
+git checkout tsutils
+npm install -g eslint_d
+npm install -g typescript-language-server
+npm install -g typescript
+npm install -g @fsouza/prettier
+npm install -g tree-sitter-cli
 nvim .
 :PackerInstall
 ```

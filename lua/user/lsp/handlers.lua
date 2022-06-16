@@ -46,7 +46,8 @@ end
 
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
+  -- if client.resolved_capabilities.document_highlight then -- resolved_capabilities DEPRECATED (use server_capabilities instead)
+  if client.server_capabilities.documentHighlightProvider then -- Reference: https://sbulav.github.io/til/til-neovim-highlight-references/
     vim.api.nvim_exec(
       [[
       augroup lsp_document_highlight
@@ -76,12 +77,12 @@ local function lsp_keymaps(bufnr)
     bufnr,
     "n",
     "gl",
-    '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>',
+    '<cmd>lua vim.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>',
     opts
   )
   vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format()' ]]
 end
 
 local function lsp_signature_cfg()

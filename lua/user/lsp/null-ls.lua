@@ -53,71 +53,61 @@ null_ls.setup(
     {
         debug = false,
         sources = {
-            -- When using eslint and prettier inside a project the extended eslint rules by prettier can be handled by:
-            -- Version 1: (eslinrc and prettierrc work together good, but lint/codeAction on save can be slow)
-            -- diagnostics.eslint,
-            -- formatting.prettier,
-
-            -- Version 2: (fastest linting and diagnostics but not sure if this respects a prettierrc)
-            diagnostics.eslint_d, -- requires npm install -g eslint_d
-            formatting.eslint_d, 
-
-            null_ls.builtins.code_actions.eslint_d,
-
-
-            -- formatting.prettier.with({
-            --     filetypes = { "css", "scss", "html", "json", "yaml", "markdown", "graphql" },
-            -- }),
-            formatting.prettierd.with({
-                filetypes = { "css", "scss", "html", "json", "yaml", "markdown", "graphql" },
+            -- Note: UPDATED 16.6.2022, Try using eslint_d as much as possible because its the fastest
+            null_ls.builtins.code_actions.eslint_d, -- requires npm install -g eslint_d
+            null_ls.builtins.diagnostics.eslint_d,
+            null_ls.builtins.formatting.eslint_d,
+            null_ls.builtins.formatting.prettierd.with({ -- requires npm install -g @fsouza/prettierd, not sure if this respects project-based-linter-configs like prettierrc or eslintrc (this is often needed to fix error when using eslint&prettier together)
+                env = {
+                  PRETTIERD_LOCAL_PRETTIER_ONLY = 1, -- to use prettierd exclusively with the locally installed prettier package 
+                -- PRETTIERD_DEFAULT_CONFIG = vim.fn.expand "~/.config/nvim/utils/linter-config/.prettierrc.json",
+                },
+                -- filetypes = { "css", "scss", "html", "json", "yaml", "markdown", "graphql" },
                 -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
-                -- env = {
-                --     PRETTIERD_DEFAULT_CONFIG = vim.fn.expand "~/.config/nvim/utils/linter-config/.prettierrc.json",
-                -- },
-            }), -- requires npm install -g @fsouza/prettierd
-
-            -- formatting.prettier,
-            -- formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }), -- only use if no local prettiertc or eslintrc
-            -- formatting.black.with({ extra_args = { "--fast" } }), -- not sure what this does
-            -- diagnostics.flake8
-            -- formatting.stylua,
+            }),
+            null_ls.builtins.formatting.stylua,
+            -- null_ls.builtins.code_actions.gitsigns,
+            -- null_ls.builtins.diagnostics.markdownlint,
         },
+
         -- format on save (sync) but i think this saves all buffers not only one https://github.com/jose-elias-alvarez/null-ls.nvim
+        -- format on save UPDATED 16.6.2022
+        -- Regarding https://neovim.io/doc/user/lsp.html you can check the current available capabilities with :lua =vim.lsp.get_active_clients()[1].server_capabilities
         on_attach = function(client)
-            if client.resolved_capabilities.document_formatting then
+            if client.server_capabilities.documentFormattingProvider then -- client.resolved_capabilities.document_formatting (deprecated)
                 vim.cmd(
                     [[
-            augroup LspFormatting
-              autocmd! * <buffer>
-              autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync() 
-            augroup END
-            ]]
+                augroup LspFormatting
+                autocmd! * <buffer>
+                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
+                augroup END
+                ]]
                 )
             end
         end
 
         -- format on save (sync)
         -- on_attach = function(client)
-        --     if client.resolved_capabilities.document_formatting then
-        --         vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 3000)")
+        --     if client.server_capabilities.documentFormattingProvider then -- resolved_capabilities DEPRECATED (use server_capabilities instead)
+        --         vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format(nil, 3000)")
         --     end
         -- end,
 
         -- format on save (async) more performant but does not format on :wq
-        --     on_attach = function(client, bufnr)
-        --         if client.supports_method("textDocument/formatting") then
-        --             -- wrap in an augroup to prevent duplicate autocmds
-        --             vim.cmd(
-        --                 [[
-        --         augroup LspFormatting
-        --             autocmd! * <buffer>
-        --             autocmd BufWritePost <buffer> lua formatting(vim.fn.expand("<abuf>"))
-        --         augroup END
-        --
-        --         ]]
-        --             )
-        --         end
-        --     end
+            -- on_attach = function(client, bufnr)
+            --     if client.supports_method("textDocument/formatting") then
+            --         -- wrap in an augroup to prevent duplicate autocmds
+            --         vim.cmd(
+            --             [[
+            --     augroup LspFormatting
+            --         autocmd! * <buffer>
+            --         autocmd BufWritePost <buffer> lua formatting(vim.fn.expand("<abuf>"))
+            --     augroup END
+        
+            --     ]]
+            --         )
+            --     end
+            -- end
     }
 
 )

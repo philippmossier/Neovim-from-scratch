@@ -13,7 +13,11 @@ M.on_attach = function(client, bufnr)
 
 		-- fixes asking about null-ls or tsserver (on video minute:17:20) https://www.youtube.com/watch?v=b7OguLuaYvE&list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ&index=17
 		if client.name == "tsserver" then
-			client.resolved_capabilities.document_formatting = false
+			-- client.resolved_capabilities.document_formatting = false -- resolved_capabilities DEPRECATED (use server_capabilities instead)
+            -- client.resolved_capabilities.document_range_formatting = false
+
+            client.server_capabilities.documentFormattingProvider = false
+            -- client.server_capabilities.documentRangeFormattingProvider = false
 		end
 
 		-- ts_utils
