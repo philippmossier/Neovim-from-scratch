@@ -135,6 +135,10 @@ local mappings = {
       "<cmd>Telescope lsp_document_diagnostics<cr>",
       "Document Diagnostics",
     },
+    h = {
+      "<cmd>lua vim.diagnostic.open_float()<CR>",
+      "Current line diagnostics",
+    },
     w = {
       "<cmd>Telescope lsp_workspace_diagnostics<cr>",
       "Workspace Diagnostics",

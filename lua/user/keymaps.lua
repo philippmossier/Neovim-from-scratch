@@ -70,4 +70,4 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Jest https://github.com/David-Kunz/jester
 keymap("n", "<leader>j", "<cmd>lua require\"jester\".run_file({cmd = \"./node_modules/.bin/jest '$result' -- $file\", terminal_cmd = \":split | terminal\"})<CR>", opts)
--- keymap("n", "gl", '<cmd>lua vim.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>', opts)
+-- keymap("n", "gl", '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
