@@ -125,6 +125,22 @@ return packer.startup(function(use)
   -- Jest
   use("David-Kunz/jester")
 
+  -- debuging with nvim-dap
+	use { "mfussenegger/nvim-dap"}
+	use { "nvim-telescope/telescope-dap.nvim" }
+	use { "mfussenegger/nvim-dap-python"}
+	use { "Pocco81/DAPInstall.nvim"}
+	-- use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}, after = "nvim-dap" }
+	-- use { "Pocco81/dap-buddy.nvim", after = "nvim-dap"} ??
+	-- use {
+	-- 	"theHamsta/nvim-dap-virtual-text",
+	-- 	after = "nvim-dap",
+	-- 	config = function()
+	-- 	require("nvim-dap-virtual-text").setup {}
+	-- 	end,
+	-- }
+	-- use { "jbyuki/one-small-step-for-vimkind", after = "nvim-dap" }
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
