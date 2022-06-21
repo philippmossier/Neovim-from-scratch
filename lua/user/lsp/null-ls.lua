@@ -73,13 +73,14 @@ null_ls.setup(
         -- format on save (sync) but i think this saves all buffers not only one https://github.com/jose-elias-alvarez/null-ls.nvim
         -- format on save UPDATED 16.6.2022
         -- Regarding https://neovim.io/doc/user/lsp.html you can check the current available capabilities with :lua =vim.lsp.get_active_clients()[1].server_capabilities
+        -- different formatting ways formatting_sync() formatting() format()
         on_attach = function(client)
             if client.server_capabilities.documentFormattingProvider then -- client.resolved_capabilities.document_formatting (deprecated)
                 vim.cmd(
                     [[
                 augroup LspFormatting
                 autocmd! * <buffer>
-                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
+                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
                 augroup END
                 ]]
                 )
