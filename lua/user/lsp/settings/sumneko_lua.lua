@@ -2,9 +2,9 @@ local default_on_attach = require("user.lsp.handlers").on_attach
 
 return {
 	on_attach = function(client, bufnr)
-		-- import on_attach settings which are used on every server 
+		-- import on_attach settings which are used on every server
 		default_on_attach(client, bufnr)
-	  end,
+	end,
 	settings = {
 
 		Lua = {
