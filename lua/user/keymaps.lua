@@ -74,3 +74,14 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- Jest https://github.com/David-Kunz/jester
 keymap("n", "<leader>j", "<cmd>lua require\"jester\".run_file({cmd = \"./node_modules/.bin/jest '$result' -- $file\", terminal_cmd = \":split | terminal\"})<CR>", opts)
 -- keymap("n", "gl", '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+
+
+-- git conflicts:
+-- set default_mappings = false, in akinsho/git-conflict.nvim.setup() then you can change following defaults:
+-- keymap.set('n', 'co', '<Plug>(git-conflict-ours)')
+-- keymap.set('n', 'ct', '<Plug>(git-conflict-theirs)')
+-- keymap.set('n', 'cb', '<Plug>(git-conflict-both)')
+-- keymap.set('n', 'c0', '<Plug>(git-conflict-none)')
+-- keymap.set('n', ']x', '<Plug>(git-conflict-prev-conflict)')
+-- keymap.set('n', '[x', '<Plug>(git-conflict-next-conflict)')
+
